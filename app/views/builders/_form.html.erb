@@ -1,4 +1,4 @@
-<%= form_for(@builder) do |f| %>
+<%= form_for(@builder, :html => {multipart: true}) do |f| %>
   <% if @builder.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@builder.errors.count, "error") %> prohibited this builder from being saved:</h2>
@@ -13,19 +13,23 @@
 
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, class:"form-control" %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address, class:"form-control" %>
+    <%= f.text_field :address, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone, class:"form-control" %>
+    <%= f.text_field :phone, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :website %><br>
-    <%= f.text_field :website, class:"form-control" %>
+    <%= f.text_field :website, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %> 
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>
