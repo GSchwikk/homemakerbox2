@@ -15,6 +15,7 @@ gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 gem 'fog', require: 'fog/aws'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem "mini_magick"
 #gem 'fog', require: "fog/aws/storage"
 gem 'figaro'
 
