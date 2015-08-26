@@ -13,8 +13,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
-gem 'carrierwave' #github:'carrierwaveuploader/carrierwave'  # require: "fog/aws/storage"
+gem 'carrierwave'
 gem 'fog-aws'
+#gem 'fog', require: "fog/aws/storage"
 gem 'figaro'
 
 group :development, :test do
