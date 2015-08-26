@@ -16,8 +16,8 @@ gem 'pg', group: :production
 gem 'fog', require: 'fog/aws'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "mini_magick"
-#gem 'fog', require: "fog/aws/storage"
 gem 'figaro'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
