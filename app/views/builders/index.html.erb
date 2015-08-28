@@ -23,7 +23,7 @@
         <td><%= builder.name %></td>
         <td><%= builder.address %></td>
         <td><%= builder.phone %></td>
-        <td><%= builder.website %></td>
+        <td><%= link_to builder.website, builder.website %></td>
         <td><%= link_to 'Show', builder , class: "btn btn-link" %></td>
         <td><%= link_to 'Edit', edit_builder_path(builder) , class: "btn btn-link" %></td>
         <td><%= link_to 'Destroy', builder, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
@@ -33,7 +33,6 @@
 </table>
 
 <br>
-
 <%= link_to 'New Builder', new_builder_path %>
 <br>
 
