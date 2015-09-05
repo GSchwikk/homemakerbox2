@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_review, only: [:edit, :update, :destroy]
 
+  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_builder
+  before_action :authenticate_user!
 
   # GET /reviews/new
   def new
@@ -17,6 +18,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    @review.builder_id = @builder.id
 
     respond_to do |format|
       if @review.save
@@ -54,6 +56,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+      def set_builder
+        @builder = Builder.find(params[:builder_id])
+      end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
