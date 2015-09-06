@@ -1,28 +1,48 @@
 <div class="row">
-  <div class="col-md-3">
+	<div class="col-md-3">
+		<%= image_tag @builder.image_url %>
 
-<%= image_tag @builder.image_url %>
+		<h2>
+		  <%= @builder.name %>
+		</h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @builder.name %>
-</p>
+		<p>
+		  <strong>Address:</strong>
+		  <%= @builder.address %>
+		</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @builder.address %>
-</p>
+		<p>
+		  <strong>Phone:</strong>
+		  <%= @builder.phone %>
+		</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @builder.phone %>
-</p>
+		<p>
+		  <strong>Website:</strong>
+		  <%= link_to @builder.website, @builder.website %>
+		</p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @builder.website %>
-</p>
+		<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-primary" %>
 
-<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-primary" %>
+	</div>
+
+	<div class="col-md-9">
+		<% if @reviews.blank? %>
+			<h3>No reviews yet. Be the first to write one!</h3>
+		<% else %>
+			<% @reviews.each do |review| %>
+		 	<p><%= review.rating %></p>
+		 	<p><%= review.comment %></p>
+			<% end %>
+		<% end %>
+
+
+	</div>
+</div>
+
+
+
+
+
 <%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |
 <%= link_to 'Back', builders_path , class: "btn btn-link"%>
+

@@ -10,6 +10,7 @@ class BuildersController < ApplicationController
   # GET /builders/1
   # GET /builders/1.json
   def show
+    @reviews = Review.where(builder_id: @builder.id)
   end
 
   # GET /builders/new
