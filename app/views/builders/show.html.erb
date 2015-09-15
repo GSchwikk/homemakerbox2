@@ -6,6 +6,9 @@
 		  <%= @builder.name %>
 		</h2>
 
+		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
+		<p><%= "#{@reviews.length} reviews" %></p>
+
 		<p>
 		  <strong>Address:</strong>
 		  <%= @builder.address %>
@@ -22,6 +25,7 @@
 		</p>
 
 		<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-primary" %>
+
 	<br>	
 	<%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |
 	<%= link_to 'Back', builders_path , class: "btn btn-link"%>
@@ -29,17 +33,26 @@
 	</div>
 
 
+		<div class="col-md-9">
+			<% if @reviews.blank? %>
+				<h3>No reviews yet. Be the first to write one!</h3>
+			<% else %>
+			<table class="table">
+				<tbody>
+					<% @reviews.each do |review| %>
+						<tr>
+							<td>
+								<div class="star-rating" data-score= <%= review.rating %> ></div>
+								<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
+							</td>
+						<tr>
+					<% end %>
+		</tbody>
+	</table>
 
-	<div class="col-md-9">
-		<% if @reviews.blank? %>
-			<h3>No reviews yet. Be the first to write one!</h3>
-		<% else %>
-			<% @reviews.each do |review| %>
-			  <div class="star-rating" data-score= <%= review.rating %> ></div>
-			  <p><%= review.comment %></p>
 			<% end %>
-		<% end %>
-	</div>
+		</div>
+
 </div>
 
 

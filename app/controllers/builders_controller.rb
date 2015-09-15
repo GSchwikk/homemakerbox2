@@ -10,7 +10,12 @@ class BuildersController < ApplicationController
   # GET /builders/1
   # GET /builders/1.json
   def show
-    @reviews = Review.where(builder_id: @builder.id)
+    @reviews = Review.where(builder_id: @builder.id).order("created_at DESC")
+    if @reviews.blank?
+     @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /builders/new
