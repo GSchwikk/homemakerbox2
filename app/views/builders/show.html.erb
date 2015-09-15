@@ -22,8 +22,13 @@
 		</p>
 
 		<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-primary" %>
+	<br>	
+	<%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |
+	<%= link_to 'Back', builders_path , class: "btn btn-link"%>
 
 	</div>
+
+
 
 	<div class="col-md-9">
 		<% if @reviews.blank? %>
@@ -38,8 +43,7 @@
 </div>
 
 
-<%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |
-<%= link_to 'Back', builders_path , class: "btn btn-link"%>
+
 
 
 <script>
