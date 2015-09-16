@@ -1,8 +1,8 @@
 <%= form_for(@builder, :html => {multipart: true}) do |f| %>
   <% if @builder.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@builder.errors.count, "error") %> prohibited this builder from being saved:</h2>
-
+       <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4><%= pluralize(@builder.errors.count, "error") %> prohibited this review from being saved:</h4>
       <ul>
       <% @builder.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,19 +13,19 @@
 
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "The Good Builder Co." %>
   </div>
   <div class="form-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address, class: "form-control" %>
+    <%= f.text_field :address, class: "form-control", placeholder: "350 Sandton Drive, Sandton, Johannesburg, 2060" %>
   </div>
   <div class="form-group">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone, class: "form-control" %>
+    <%= f.text_field :phone, class: "form-control", placeholder: "(011) 123-4567" %>
   </div>
   <div class="form-group">
     <%= f.label :website %><br>
-    <%= f.text_field :website, class: "form-control" %>
+    <%= f.text_field :website, class: "form-control", placeholder: "http://thegoodbuildercompany.com/" %>
   </div>
   <div class="form-group">
     <%= f.label :image %><br>
