@@ -3,6 +3,14 @@ class BuildersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :check_user, except: [:index, :show]
 
+def search
+  if params[:search].present?
+    @builders = Builder.search(params[:search])
+  else
+    @builders = Builder.all
+  end
+end
+
   def check_user
     unless current_user.admin?
       redirect_to root_url, alert: "Sorry, only admins can do that!"
