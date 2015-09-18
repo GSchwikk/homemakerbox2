@@ -13,27 +13,32 @@
       <th>Address</th>
       <th>Phone</th>
       <th>Website</th>
-      <th colspan="3"></th>
+      <% if user_signed_in? && current_user.admin? %>
+        <th colspan="2"></th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @builders.each do |builder| %>
       <tr>
-        <td><%= builder.name %></td>
+        <td><%= link_to builder.name, builder , class: "btn btn-link" %></td>
         <td><%= builder.address %></td>
         <td><%= builder.phone %></td>
         <td><%= link_to builder.website, builder.website %></td>
-        <td><%= link_to 'Show', builder , class: "btn btn-link" %></td>
-        <td><%= link_to 'Edit', edit_builder_path(builder) , class: "btn btn-link" %></td>
-        <td><%= link_to 'Destroy', builder, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        <% if user_signed_in? && current_user.admin? %>
+          <td><%= link_to 'Edit', edit_builder_path(builder) , class: "btn btn-link" %></td>
+          <td><%= link_to 'Destroy', builder, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'New Builder', new_builder_path %>
+<% if user_signed_in? && current_user.admin? %>
+<%= link_to 'New Builder', new_builder_path, class: "btn btn-link" %>
+<% end %>
 <br>
 
 <%= image_tag "https://s3.amazonaws.com/homemakerbox2/uploads/happy_footer.png" %>

@@ -1,5 +1,13 @@
 class BuildersController < ApplicationController
   before_action :set_builder, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, except: [:index, :show]
+
+  def check_user
+    unless current_user.admin?
+      redirect_to root_url, alert: "Sorry, only admins can do that!"
+    end
+  end
 
   # GET /builders
   # GET /builders.json
