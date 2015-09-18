@@ -7,7 +7,7 @@ class Builder < ActiveRecord::Base
 	validates :phone, format: { with: /\A\(\d{3}\) \d{3}-\d{4}\z/,
     message: "must be in the format (123) 456-7890" }
 
-    validates :phone, format: { with: /\Ahttps?:\/\/.*\z/,
+    validates :website, format: { with: /\Ahttps?:\/\/.*\z/,
     message: "must start with http:// or https://" }
 
     validates :address, format: { with: /\A\d+[^,]+,[^,]+, [^,]+, \d{4}\z/,

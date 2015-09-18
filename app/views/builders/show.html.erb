@@ -30,6 +30,18 @@
 	<%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |
 	<%= link_to 'Back', builders_path , class: "btn btn-link"%>
 
+	<br>
+	<br>
+
+	<iframe
+      width="300"
+      height="300"
+      frameborder="0" style="border:0"  
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBM4rGd0YROMFW9718nZVsC9FhecxKwOsM
+      &q=<%= @builder.address.parameterize %> &zoom=14">
+    </iframe> 
+
+
 	</div>
 
 
