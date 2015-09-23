@@ -10,6 +10,11 @@
 		<p><%= "#{@reviews.length} reviews" %></p>
 
 		<p>
+		  <strong>Category:</strong>
+		  <%= @builder.category.name %>
+		</p>
+
+		<p>
 		  <strong>Address:</strong>
 		  <%= @builder.address %>
 		</p>
@@ -24,7 +29,7 @@
 		  <%= link_to @builder.website, @builder.website %>
 		</p>
 
-		<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-primary" %>
+		<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-default" %>
 
 	<br>	
 	<%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |

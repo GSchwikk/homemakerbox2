@@ -1,26 +1,25 @@
 class BuildersController < ApplicationController
   before_action :set_builder, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :check_user, except: [:index, :show]
+  before_action :authenticate_user!, except: [:search, :index, :show]
+  before_action :check_user, except: [:search,  :index, :show]
 
-def search
-  if params[:search].present?
-    @builders = Builder.search(params[:search])
-  else
-    @builders = Builder.all
-  end
-end
-
-  def check_user
-    unless current_user.admin?
-      redirect_to root_url, alert: "Sorry, only admins can do that!"
+  def search
+    if params[:search].present?
+      @builders = Builder.search(params[:search])
+    else
+      @builders = Builder.all
     end
   end
 
   # GET /builders
   # GET /builders.json
   def index
-    @builders = Builder.all
+    if params[:category].blank?
+      @builders = Builder.all.order("created_at DESC")
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @builders = Builder.where(category_id: @category_id).order("created_at DESC")
+    end
   end
 
   # GET /builders/1
@@ -28,7 +27,7 @@ end
   def show
     @reviews = Review.where(builder_id: @builder.id).order("created_at DESC")
     if @reviews.blank?
-     @avg_rating = 0
+      @avg_rating = 0
     else
       @avg_rating = @reviews.average(:rating).round(2)
     end
@@ -89,8 +88,14 @@ end
       @builder = Builder.find(params[:id])
     end
 
+    def check_user
+      unless current_user.admin?
+        redirect_to root_url, alert: "Sorry, only admins can do that!"
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def builder_params
-      params.require(:builder).permit(:name, :address, :phone, :website, :image)
+      params.require(:builder).permit(:name, :category_id, :address, :phone, :website, :image)
     end
 end
