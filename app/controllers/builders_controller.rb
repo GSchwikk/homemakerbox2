@@ -15,10 +15,10 @@ class BuildersController < ApplicationController
   # GET /builders.json
   def index
     if params[:category].blank?
-      @builders = Builder.all.order("created_at DESC")
+      @builders = Builder.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @builders = Builder.where(category_id: @category_id).order("created_at DESC")
+      @builders = Builder.where(category_id: @category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
   end
 
@@ -31,6 +31,7 @@ class BuildersController < ApplicationController
     else
       @avg_rating = @reviews.average(:rating).round(2)
     end
+    @reviews = Review.where(builder_id: @builder.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
   end
 
   # GET /builders/new

@@ -56,6 +56,8 @@
 			<% else %>
 			<table class="table">
 				<thead>
+				<h3>Most Recent Reviews:</h3>	
+				<%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
 					<tr>
 						<th class="col-md-3"></th>
 						<th class="col-md-9"></th>
@@ -84,13 +86,18 @@
 						<tr>
 					<% end %>
 		</tbody>
+
+		
+
 	</table>
+
+<%= will_paginate @reviews, renderer: BootstrapPagination::Rails %>
+
 
 			<% end %>
 		</div>
 
 </div>
-
 
 
 

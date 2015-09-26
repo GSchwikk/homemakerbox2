@@ -36,6 +36,9 @@
 </table>
 
 <br>
+<%= will_paginate @builders, renderer: BootstrapPagination::Rails %>
+
+<br>
 <% if user_signed_in? && current_user.admin? %>
   <%= link_to 'New Builder', new_builder_path, class: "btn btn-default" %>
 <% end %>
