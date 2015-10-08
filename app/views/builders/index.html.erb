@@ -35,7 +35,6 @@
   </tbody>
 </table>
 
-<br>
 <%= will_paginate @builders, renderer: BootstrapPagination::Rails %>
 
 <br>
@@ -43,5 +42,8 @@
   <%= link_to 'New Builder', new_builder_path, class: "btn btn-default" %>
 <% end %>
 <br>
+<div class="center">
+  <div class="fb-like" data-href="https://homemakerbox2.herokuapp.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+</div>
 
 <%= image_tag "https://s3.amazonaws.com/homemakerbox2/uploads/happy_footer.png" %>
