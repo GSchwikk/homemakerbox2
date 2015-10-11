@@ -6,10 +6,10 @@ class Builder < ActiveRecord::Base
 	has_many :reviews
 	belongs_to :category
 
-	validates :name, :address, :category_id, :phone, :website, :image, presence: true
+	validates :name, :description, :address, :category_id, :phone, :website, :image, presence: true
 
 	validates :phone, format: { with: /\A\(\d{3}\) \d{3}-\d{4}\z/,
-    message: "must be in the format (123) 456-7890" }
+    message: "must be in the format (123) 456-7890 or (082) 123-1234" }
 
     validates :website, format: { with: /\Ahttps?:\/\/.*\z/,
     message: "must start with http:// or https://" }

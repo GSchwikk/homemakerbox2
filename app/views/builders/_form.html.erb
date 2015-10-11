@@ -15,7 +15,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name, class: "form-control", placeholder: "The Good Builder Co." %>
   </div>
-    <div class="form-group">
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_field :description, class: "form-control", placeholder: "Makes and repairs cupboards" %>
+  </div>
+  <div class="form-group">
     <%= f.label :category_id %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a category"}, {class: "btn btn-default dropdown-toggle"} %>
   </div>
