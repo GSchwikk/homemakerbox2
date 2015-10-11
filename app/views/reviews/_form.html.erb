@@ -1,4 +1,4 @@
-<%= form_for([@builder, @review]) do |f| %>
+<%= form_for([@builder, @review], :html => { multipart: true }) do |f| %>
   <% if @review.errors.any? %>
 
       <div id="error_explanation" class="alert alert-danger alert-dismissable">
@@ -17,6 +17,9 @@
   <div class="form-group">
     <%= f.label :comment %>
     <%= f.text_area :comment, class: "form-control" %>
+    <br>
+    <p> (Optional) Add photo of completed work: </p>
+    <%= f.file_field :image, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-default" %>
