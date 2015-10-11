@@ -13,7 +13,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :file
   end
  
+process :resize_to_fit => [850, 1275]
+
+version :logo do
   process :resize_to_fit => [200, 300]
+end
 
   version :thumb do
     process resize_to_fill: [150,100]
