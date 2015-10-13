@@ -1,3 +1,4 @@
+
 <div class="row">
 	<div class="col-md-3">
 		<%= image_tag @builder.image.logo.url %>
@@ -34,7 +35,7 @@
 		  <%= link_to @builder.website, @builder.website %>
 		</p>
 
-		<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-default" %>
+			<%= link_to "Write Review", new_builder_review_path(@builder), class: "btn btn-default" %>
 
 	<br>	
 	<%= link_to 'Edit', edit_builder_path(@builder) , class: "btn btn-link"%> |
@@ -80,25 +81,9 @@
 							<td>
 								<div class="star-rating" data-score= <%= review.rating %> ></div>
 								<p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
-								<a class="img-thumbnail" 
-									data-toggle="modal" 
-   									data-target="#myModal"
-   									>
-										<%= image_tag review.image.thumb.url %>
+								<a rel="lightbox" href="<%= review.image.url %>" >				
+									<%= image_tag(review.image.thumb.url, :class =>"img-thumbnail") %>	
 								</a>
-								<!-- Modal -->
-								<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" 
-								aria-labelledby="myModalLabel">
-								  <div class="modal-dialog modal-lg" role="document">
-								    <div class="modal-content">								   
-								      <div class="modal-body">
-								      	<div class="center">
-								        	<%= image_tag review.image.url %>
-								    	</div>
-								      </div>				
-								    </div>
-								  </div>
-								</div>
 
 								<br>
 								<% if user_signed_in? %>
@@ -128,6 +113,7 @@
 
 
 
+
 <script>
   $('.star-rating').raty({
     path: 'https://s3.amazonaws.com/homemakerbox2/stars',
@@ -136,7 +122,11 @@
       return $(this).attr('data-score');
     }
   });
-  $('#myModal').modal(options)
+
 </script>
+
+
+
+
 
 
