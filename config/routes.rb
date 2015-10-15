@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :categories
   devise_for :users
-resources :builders do
+  resources :builders do
     collection do
       get 'search'
     end
