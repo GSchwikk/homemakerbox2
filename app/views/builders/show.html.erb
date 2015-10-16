@@ -10,6 +10,20 @@
 		<div class="star-rating" data-score= <%= @avg_rating %> ></div>
 		<p><%= "#{@reviews.length} reviews" %></p>
 
+			<% if @images.blank? %>
+				<p></p>
+			<% else %>
+			
+			<p>
+			<a rel="lightbox[group]" href="<%= @images.first.url %>" > See all review photos</a>
+			</p>
+
+			<% @images.drop(1).each do |image| %>
+				<a rel="lightbox[group]" href="<%= image.url %>" ></a>
+			<% end %>
+
+		<% end %>
+		  
 		<p>
 		  <strong>Category:</strong>
 		  <%= @builder.category.name %>
