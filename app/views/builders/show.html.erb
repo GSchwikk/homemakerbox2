@@ -89,7 +89,9 @@
 							<td>
 								<h4>
 									<%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %>
+
 								</h4>
+							<p>Total Reviews: <%= review.user.reviews.count %></p>
 							<p><%= review.created_at.strftime("%-m/%-d/%-y") %></p>
 							</td>		
 							<td>

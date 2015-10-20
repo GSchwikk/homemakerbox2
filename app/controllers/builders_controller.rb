@@ -25,6 +25,7 @@ class BuildersController < ApplicationController
   # GET /builders/1
   # GET /builders/1.json
   def show
+
     @reviews = Review.where(builder_id: @builder.id).order("created_at DESC")
 
     @images = []
@@ -36,8 +37,6 @@ class BuildersController < ApplicationController
         @images << review.image
       end
     end
-    
-
 
     if @reviews.blank?
       @avg_rating = 0
@@ -45,6 +44,8 @@ class BuildersController < ApplicationController
       @avg_rating = @reviews.average(:rating).round(2)
     end
     
+   
+
     @reviews = Review.where(builder_id: @builder.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
 
   end
