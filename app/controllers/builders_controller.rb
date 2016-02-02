@@ -15,7 +15,7 @@ class BuildersController < ApplicationController
   # GET /builders.json
   def index
     if params[:category].blank?
-      @builders = Builder.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
+      @builders = Builder.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     else
       @category_id = Category.find_by(name: params[:category]).id
       @builders = Builder.where(category_id: @category_id).order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
