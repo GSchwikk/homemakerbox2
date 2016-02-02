@@ -3,6 +3,8 @@
 .jumbotron {
 	background-color: #e0f98c;
 	border: 2px solid #000000;
+  padding: 10px;
+  margin-bottom: 30px;
 	h2 {
       color: #83A707;
       font-weight: bold;
@@ -27,9 +29,6 @@
   }
 }
 
-.container-fluid {
-	padding: 5px 120px;
-}
 
 .center {
   text-align: center;

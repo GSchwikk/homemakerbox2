@@ -2,38 +2,41 @@
 
 <div class ="jumbotron">
   <h2> HomeMakerBox is the best way to find reviews on local home service providers. </h2>
-  <h3> Explore the best builders, cleaners, makers, and furnishers in your area. 
-  <br> Leave reviews and ratings for your fellow homemakers. </h3>
+  <h3> Explore the best builders, cleaners, makers, and furnishers in your area. Leave reviews and ratings for your fellow homemakers. </h3>
 </div>
 
-<table class="table table-hover table-condensed">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Website</th>
-      <% if user_signed_in? && current_user.admin? %>
-        <th colspan="2"></th>
-      <% end %>
-    </tr>
-  </thead>
+<div class= "row">
+  <div class = "table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Website</th>
+          <% if user_signed_in? && current_user.admin? %>
+            <th colspan="2"></th>
+          <% end %>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @builders.each do |builder| %>
-      <tr>
-        <td><%= link_to builder.name, builder , class: "btn btn-link" %></td>
-        <td><%= builder.address %></td>
-        <td><%= builder.phone %></td>
-        <td><%= link_to builder.website, builder.website , class: "btn btn-link" %></td>
-        <% if user_signed_in? && current_user.admin? %>
-          <td><%= link_to 'Edit', edit_builder_path(builder) , class: "btn btn-link" %></td>
-          <td><%= link_to 'Destroy', builder, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+      <tbody>
+        <% @builders.each do |builder| %>
+          <tr>
+            <td><%= link_to builder.name, builder , class: "btn btn-link" %></td>
+            <td><%= builder.address %></td>
+            <td><%= builder.phone %></td>
+            <td><%= link_to builder.website, builder.website , class: "btn btn-link" %></td>
+            <% if user_signed_in? && current_user.admin? %>
+              <td><%= link_to 'Edit', edit_builder_path(builder) , class: "btn btn-link" %></td>
+              <td><%= link_to 'Destroy', builder, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= will_paginate @builders, renderer: BootstrapPagination::Rails %>
 
